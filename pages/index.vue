@@ -50,8 +50,8 @@
               <br />Media Konto an.
             </p>
 
-            <v-btn class="my-3">mit google registrieren</v-btn>
-            <v-btn class="my-3">mit fACEBOOK registrieren</v-btn>
+            <v-btn class="my-3"><v-icon>mdi-google</v-icon>&nbsp;&nbsp;&nbsp;mit google registrieren</v-btn>
+            <v-btn class="my-3"><v-icon>mdi-facebook</v-icon>&nbsp;&nbsp;&nbsp;mit fACEBOOK registrieren</v-btn>
 
             <p class="text-center">
               oder registrieren Sie sich mit Ihrer E-Mail-
