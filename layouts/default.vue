@@ -1,90 +1,97 @@
-<template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
+<template>  
+  <v-app class="app-wrapper">
+    <v-content
+      id="parallax-hero"
     >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
+      <v-img :src="parallax_src" />
     </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-      <span>&copy; 2019</span>
-    </v-footer>
+
+    <v-content>
+      <v-app-bar
+        class="header-bar"
+        absolute
+      >
+        <v-container fluid>
+          <v-row>
+            <div class="logo-container">
+              <a class="logo">
+                <v-img 
+                  :src="logo_src" 
+                  max-width="165"
+                />
+              </a>
+            </div>
+
+            <div class="flex-grow-1" />
+
+            <a class="login-btn">LOGIN</a>
+          </v-row>
+        </v-container>
+      </v-app-bar>
+      
+      <v-content>
+        <nuxt />
+      </v-content>
+      
+      <v-footer 
+        class="footer-container"
+        absolute
+      >
+        <v-container>
+          <v-row>
+            <v-col 
+              class="ml-auto"
+              :cols="3"
+            >
+              <p><label>Social Media</label></p>
+
+              <v-layout>
+                <v-img 
+                  :src="logo_solo_src" 
+                  max-width="30"
+                />
+              </v-layout>
+            </v-col>
+
+            <v-col
+              :cols="3"
+            >
+              <p><label>Unternehmen</label></p>
+
+              <v-layout column>
+                <a>Jobs</a>
+                <a>Blog</a>
+                <a>Investor</a>
+                <a>Kontaktiere uns</a>
+              </v-layout>
+            </v-col>
+
+            <v-col
+              class="mr-auto"
+              :cols="3"
+            >
+              <p><label>Legal</label></p>
+
+              <v-layout column>
+                <a>Cookie-Richtlinie</a>
+                <a>Urheberrechtsrichtlinie</a>
+                <a>Datenschutzrichtlinie</a>
+              </v-layout>
+            </v-col>          
+          </v-row>
+        </v-container>
+
+        <v-container
+          class="copy-right"
+        >
+          <v-layout>
+            <span>Made with</span>
+            <div class="flex-grow-1" />
+            <span>©TEMPI</span>
+          </v-layout>
+        </v-container>
+      </v-footer>
+    </v-content>
   </v-app>
 </template>
 
@@ -92,26 +99,54 @@
 export default {
   data () {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      logo_src: require("../assets/images/tempi-logo-white.png"),
+      logo_solo_src: require("../assets/images/logo-solo-white.png"),
+      parallax_src: require("../assets/images/60.png"),
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .app-wrapper {
+    background-color: transparent;
+  }
+
+  #parallax-hero {
+    position: fixed;
+  }
+
+  .header-bar {
+    background-color: #37474F!important;
+
+    .logo-container .logo {
+      display: flex;
+    }
+
+    .login-btn {
+      display: flex; margin: auto; 
+      color: #FFF
+    }
+  }
+
+  footer {
+    &.footer-container {
+      background-color: #455A64; 
+      color: #FFF;
+      padding: 0;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .layout a {
+      color: #FFF;
+    }
+
+    .copy-right {
+      background-color: #37474F;
+      padding: 16px;
+    }
+  }
+</style>
