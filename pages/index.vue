@@ -267,6 +267,13 @@ export default {
         .headshots {
           width: 120px;
 
+          .headshot {
+            border-radius: 50%;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+          }
+
           .headshot:first-child {
             margin-left: auto;
           }
