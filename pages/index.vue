@@ -111,6 +111,26 @@
           <v-btn class="text-uppercase col-12">mehr Jobs</v-btn>
         </v-col>
       </v-row>
+
+      <v-row class="portfolios-container mb-5">
+        <v-col
+          class="portfolio fill-height"
+          :cols="4"
+          v-for="portfolio in portfolios"
+          :key="portfolio"
+        >
+          <v-card class="pa-3 fill-height">
+            <v-layout class="column fill-height">
+              <v-img class="mx-auto mt-auto" :src="portfolio.image_src" width="240" :contain="true" />
+
+              <label>
+                <strong>{{portfolio.title}}</strong>
+              </label>
+              <p>{{portfolio.summary}}</p>
+            </v-layout>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-layout>
   </v-container>
 </template>
@@ -172,6 +192,23 @@ export default {
           name: "ISS Facility Services AG",
           summary: "4126 Bettingen"
         }
+      ],
+      portfolios: [
+        {
+          image_src: require("@/assets/images/SVGZeichenfläche 10.png"),
+          title: "Schritt 1",
+          summary: "Erstellen Sie Ihr Profil"
+        },
+        {
+          image_src: require("@/assets/images/SVGZeichenfläche 19.png"),
+          title: "Schritt 2",
+          summary: "Lassen Sie sich finden oder suche den passenden Job"
+        },
+        {
+          image_src: require("@/assets/images/SVG02Zeichenfläche 18.png"),
+          title: "Schritt 3",
+          summary: "Bewerben Sie sich mit einem Klick"
+        }
       ]
     };
   }
@@ -211,7 +248,6 @@ export default {
   .hero-container {
     height: 100vh;
     margin-top: 100px;
-    margin-bottom: 100px;
 
     &,
     * {
@@ -289,6 +325,11 @@ export default {
           box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
         }
       }
+    }
+  }
+
+  .portfolios-container {
+    .portfolio {
     }
   }
 }

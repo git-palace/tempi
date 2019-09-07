@@ -67,7 +67,9 @@
 
         <v-container class="copy-right">
           <v-layout>
-            <span>Made with</span>
+            <span>Made with</span>&nbsp;
+            <v-icon color="white" small>mdi-heart</v-icon>&nbsp; & &nbsp;
+            <v-icon color="white" small>mdi-coffee</v-icon>&nbsp;
             <div class="flex-grow-1" />
             <span>©TEMPI</span>
           </v-layout>
@@ -130,6 +132,7 @@ footer {
   .copy-right {
     background-color: #37474f;
     padding: 16px;
+    font-size: 14px;
   }
 }
 </style>
