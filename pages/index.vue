@@ -78,6 +78,39 @@
           </v-layout>
         </v-col>
       </v-row>
+
+      <v-row class="clients-container">
+        <v-col class="client" :cols="12" v-for="client in clients" :key="client">
+          <v-layout class="column">
+            <div class="client-banner">
+              <v-img :src="client.banner_src" />
+              <h3 class="client-title">{{client.title}}</h3>
+            </div>
+
+            <v-content>
+              <v-row class="mx-auto" align="center">
+                <v-img class="circle-img" :src="client.logo_src" max-width="90" max-height="90" />
+
+                <p class="mb-0 px-3">
+                  {{client.name}}
+                  <br />
+                  {{client.summary}}
+                </p>
+              </v-row>
+
+              <p class="text-center">
+                <a class="text-uppercase">anschauen & bewerben</a>
+              </p>
+            </v-content>
+          </v-layout>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col>
+          <v-btn class="text-uppercase col-12">mehr Jobs</v-btn>
+        </v-col>
+      </v-row>
     </v-layout>
   </v-container>
 </template>
@@ -116,7 +149,30 @@ export default {
             "Dank Tempi können wir schnell und gezielt Mitarbeiter akquirieren."
         }
       ],
-      showArrows: false
+      showArrows: false,
+      clients: [
+        {
+          banner_src: require("@/assets/images/NoPath - Kopie (3)-1.png"),
+          logo_src: require("@/assets/images/NoPath.png"),
+          title: "Crewmitarbeiter/IN",
+          name: "McDonald's",
+          summary: "﻿8105 Regensdorf"
+        },
+        {
+          banner_src: require("@/assets/images/NoPath - Kopie (4).png"),
+          logo_src: require("@/assets/images/NoPath - Kopie.png"),
+          title: "Senior Accountant",
+          name: "LIPO Einrichtungsmärkte AG",
+          summary: "4133 Pratteln"
+        },
+        {
+          banner_src: require("@/assets/images/NoPath - Kopie (5).png"),
+          logo_src: require("@/assets/images/NoPath - Kopie (2)-1.png"),
+          title: "Hauswart (m/w)",
+          name: "ISS Facility Services AG",
+          summary: "4126 Bettingen"
+        }
+      ]
     };
   }
 };
@@ -145,6 +201,12 @@ export default {
 <style lang="scss" scoped>
 .content-wrapper {
   padding: 0 300px;
+  h1 {
+    font-size: 56px;
+  }
+  h3 {
+    font-size: 24px;
+  }
 
   .hero-container {
     height: 100vh;
@@ -158,7 +220,6 @@ export default {
 
     .testimonial-container {
       h1 {
-        font-size: 56px;
         color: #fff;
         text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
         margin-bottom: 60px;
@@ -196,6 +257,36 @@ export default {
         .submit {
           color: #ffffff;
           background-color: #2196f3;
+        }
+      }
+    }
+  }
+
+  .clients-container {
+    .client {
+      .client-banner {
+        position: relative;
+
+        .client-title {
+          color: #fff;
+          position: absolute;
+          bottom: 0px;
+          padding: 0 16px;
+        }
+      }
+
+      .v-content {
+        background-color: #fff;
+        padding: 16px !important;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+
+        .circle-img {
+          border-radius: 50%;
+          overflow: hidden;
+          background-color: #fff;
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
         }
       }
     }
